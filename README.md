@@ -1,12 +1,12 @@
 # Express TypeScript Auth System
 
-A robust authentication system built with **Express** and **TypeScript**, utilizing **PostgreSQL** for persistent session management via `express-session` and `connect-pg-simple`.
+A robust authentication system built with **Express** and **TypeScript**, utilizing **PostgreSQL** with **Prisma** for database management and **Sessions** persistent session management via `express-session` and `connect-pg-simple`.
 
 ## Tech Stack/Dependencies
 
 - **Backend:** Express.js
 - **Language:** TypeScript (Target: ESNext)
-- **Database:** PostgreSQL
+- **Database:** PostgreSQL with Prisma (ORM)
 - **Session Management:** `express-session`
 - **Session Store:** `connect-pg-simple` (storing sessions in Postgres)
 - **DB Driver:** `pg` & `pg-pool`
@@ -22,7 +22,7 @@ A robust authentication system built with **Express** and **TypeScript**, utiliz
 
 1. **Clone the repository:**
    ```bash
-   git clone <repository-url>
+   git clone <https://github.com/dafriyie7/express-session.git>
    cd express-session
    ```
 
@@ -38,12 +38,17 @@ A robust authentication system built with **Express** and **TypeScript**, utiliz
    DATABASE_URL="postgres://user:password@localhost:5432/your_db"
    SESSION_SECRET="your-super-secret-key"
    DEBUG=express-session
+   NODE_ENV=development
    ```
 
 4. **Database Schema:**
    Ensure you have created the `session` table in your PostgreSQL database to allow `connect-pg-simple` to store session data. You can find the schema in `node_modules/connect-pg-simple/table.sql`.
 
 ## Running the Application
+before running the application:
+```
+   pnpm install
+```
 
 ### Development
 To run the application with hot-reloading (via `ts-node` or `tsx`):
@@ -57,18 +62,3 @@ Build and run the compiled TypeScript:
 pnpm build
 pnpm start
 ```
-
-## API Documentation
-
-Once the server is running, you can access the Hono instance at `http://localhost:3000`.
-
-## Contributing
-
-1. Fork the project.
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
-4. Push to the branch (`git push origin feature/AmazingFeature`).
-5. Open a Pull Request.
-
-## License
-Distributed under the MIT License.
